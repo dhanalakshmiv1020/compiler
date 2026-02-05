@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    char op;
+    scanf("%c", &op);
+
+    if (op=='+' || op=='-' || op=='*' || op=='/')
+        printf("Valid Operator");
+    else
+        printf("Invalid Operator");
+
+    return 0;
+}
+
