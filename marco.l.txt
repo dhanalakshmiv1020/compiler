@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+int include = 0, define = 0;
+%}
+
+%%
+"#include"[ \t]*("<"[a-zA-Z0-9_.]+">"|\"[a-zA-Z0-9_.]+\")  { include++; }
+"#define"[ \t]+[a-zA-Z_][a-zA-Z0-9_]*                      { define++; }
+.|\n ;
+%%
+
+int main() {
+    yylex();
+    printf("Number of header files: %d\n", include);
+    printf("Number of macro definitions: %d\n", define);
+    return 0;
+}
+
+int yywrap() { return 1; }
